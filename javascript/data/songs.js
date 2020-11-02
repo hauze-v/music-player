@@ -4,7 +4,7 @@ export const songsList = [{
   "time": "03:50",
   "title": "Aftergold",
   "artist": "Big Wild"
-}, 
+},
 {
   "id": "2",
   "url": "../..music/Angst.mp3",
@@ -87,16 +87,4 @@ export const songsList = [{
   "time": "04:28",
   "title": "Promises",
   "artist": "Skrillex"
-}
-
-
-
-
-
-
-
-
-
-
-
-]
+}]
