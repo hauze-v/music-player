@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand");
+
+:root {
+  --main-bg-color: #1A1A1A;
+  --main-font-color: white;
+  --secondary-font-color: #aaa;
+  --light-white: #eee;
+  --light-green: #33b75c;
+  --container-width: 768px;
+  --font-main-stack: Quicksand, sans-serif;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: var(--font-main-stack);
+  line-height: 1.5;
+}
+.button {
+  padding: 1rem 3.8rem;
+  border-radius: 3.4rem;
+  text-transform: uppercase;
+  border: 0;
+  outline: 0;
+  opacity: .9;
+  transition: 0.1s all ease;
+}
+.button:hover {
+  opacity: 1;
+  /* Makes the button a little bigger */
+  transform: scale(1.1);
+}
+.button.is-green {
+  background: var(--light-green);
+  color: var(--main-font-color);
+}
+.app {
+  background: linear-gradient(to bottom, #7d182f, #100206);
+  height: 100%;
+}
+
+/* --- Track-bar styles --- */
+.track-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  transition: 0.1s all ease;
+}
+.track-bar__fill {
+  height: 6px;
+  width: 0%;
+  background-color: var(--light-green);
+}
+
+/* --- Player styles --- */
+.player {
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
