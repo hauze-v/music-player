@@ -121,7 +121,8 @@ body {
   background: rgb(0, 0, 0, 0.3);
 }
 .playlist__song--active {
-  color: light var(--light-green);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--light-green);
 }
 .playlist__song--active div {
   color: inherit;
