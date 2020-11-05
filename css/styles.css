@@ -139,6 +139,7 @@ body {
 .playlist__song-duration {
   /* Because of flexbox, we can simply use margin-left: auto to push this over to the right */
   margin-left: auto;
+  margin-right: 2rem;
   color: var(--secondary-font-color);
 }
 
