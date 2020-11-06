@@ -1,10 +1,11 @@
-import { songsList } from '../data/songs.js'; // grabs the songlist array object from songs.js
+import { songsList } from "../data/songs.js"; // grabs the songlist array object from songs.js
+// import { PlayInfo } from "../modules/play-info.js"; // grabs the object returned by PlayInfo
 
 /* Use the revealing module pattern*/
-const Playlist = (() => {
+const PlayList = (() => {
   /* Data and State Variables */
   let songs = songsList;
-  let currentlyPlayingIndex = 4;
+  let currentlyPlayingIndex = 0;
   // We're using a built-in web API from the browser to play audio and get various audio file information
   let currentSong = new Audio(songs[currentlyPlayingIndex].url);
   let isPlaying = false;
@@ -14,6 +15,54 @@ const Playlist = (() => {
 
   const init = () => {
     render();
+    listeners();
+    // PlayInfo.setState({
+    //   songsLength: songs.length,
+    //   isPlaying: !currentSong.paused
+    // });
+  }
+
+  const changeAudioSrc = () => {
+    /* Use built in src property for Audio API object */
+    currentSong.src = songs[currentlyPlayingIndex].url;
+  }
+
+  const togglePlayPause = () => {
+    return currentSong.paused ? currentSong.play() : currentSong.pause();
+  }
+
+  const mainPlay = (clickedIndex) => {
+    /* If the clicked index is the same as the currentlyPlayingIndex: toggle play or pause
+       else change the currentlyPlayingIndex to new index and changeAudioSrc */
+    if (currentlyPlayingIndex === clickedIndex) {
+      togglePlayPause();
+    } else {
+      currentlyPlayingIndex = clickedIndex;
+      changeAudioSrc();
+      togglePlayPause();
+    }
+  }
+
+  const listeners = () => {
+    // 1. Get the index of whatever's clicked
+    // 2. change the currentPlayingIndex to the index of the li tag
+    // 3. Play or pause
+      // - if it's not the same song, then change the source to that new song
+    
+    playlistEl.addEventListener("click", function(event) {
+      if (event.target && event.target.matches(".pp-icon")) {
+        /* Walk up the DOM from icon to li element */
+        const listEl = event.target.parentNode.parentNode;
+        
+        /* Get the HTML collection (ul children) */
+        const playlistHTMLCollection = listEl.parentElement.children;
+
+        /* Since you cannot run indexOf on HTML collection, we need to use es6 spread operator and turn it into an array */
+        const listElIndex = [...playlistHTMLCollection].indexOf(listEl);
+        mainPlay(listElIndex);
+        render();
+      }
+    })
   }
 
   const render = () => {
@@ -58,4 +107,4 @@ const Playlist = (() => {
   }
 })();
 
-export default Playlist;
+export default PlayList;
