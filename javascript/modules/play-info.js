@@ -1,3 +1,5 @@
+import PlayList from './playlist.js';
+
 /* Use the revealing module pattern */
 const PlayInfo = (() => {
   /* Data and state variables */
@@ -12,12 +14,26 @@ const PlayInfo = (() => {
 
   const init = () => {
     render();
+    listeners();
   }
 
-  // const setState = (obj) => {
-  //   state.songsLength = obj.songsLength;
-  //   state.isPlaying = obj.isPlaying;
-  // }
+  const listeners = () => {
+    playerTriggerEl.addEventListener("click", function() {
+      // 1. Change our own state (isPlaying) 
+      // 2. render it
+      // 3. toggle the playpause song functionalty from playlist.js
+      state.isPlaying = state.isPlaying ? false : true; // just flip it
+      render();
+      PlayList.flip();
+      
+    })
+  }
+
+  const setState = (obj) => {
+    state.songsLength = obj.songsLength;
+    state.isPlaying = obj.isPlaying;
+    render();
+  }
 
   const render = () => {
     playerCountEl.innerHTML = state.songsLength;
@@ -25,7 +41,8 @@ const PlayInfo = (() => {
   }
 
   return {
-    init
+    init,
+    setState
   }
 })();
 

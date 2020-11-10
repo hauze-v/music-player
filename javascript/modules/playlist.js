@@ -1,4 +1,5 @@
 import { songsList } from "../data/songs.js"; // grabs the songlist array object from songs.js
+import PlayInfo from "./play-info.js";
 // import { PlayInfo } from "../modules/play-info.js"; // grabs the object returned by PlayInfo
 
 /* Use the revealing module pattern*/
@@ -8,7 +9,6 @@ const PlayList = (() => {
   let currentlyPlayingIndex = 0;
   // We're using a built-in web API from the browser to play audio and get various audio file information
   let currentSong = new Audio(songs[currentlyPlayingIndex].url);
-  let isPlaying = false;
 
  /* Cache the DOM */
  const playlistEl = document.querySelector(".playlist");
@@ -16,10 +16,15 @@ const PlayList = (() => {
   const init = () => {
     render();
     listeners();
-    // PlayInfo.setState({
-    //   songsLength: songs.length,
-    //   isPlaying: !currentSong.paused
-    // });
+    PlayInfo.setState({
+      songsLength: songs.length,
+      isPlaying: !currentSong.paused
+    });
+  }
+
+  const flip = () => {
+    togglePlayPause();
+    render();
   }
 
   const changeAudioSrc = () => {
@@ -41,6 +46,11 @@ const PlayList = (() => {
       changeAudioSrc();
       togglePlayPause();
     }
+
+    PlayInfo.setState({
+      songsLength: songs.length,
+      isPlaying: !currentSong.paused
+    });
   }
 
   const playNext = () => {
@@ -112,7 +122,8 @@ const PlayList = (() => {
   }
 
   return {
-    init
+    init,
+    flip
   }
 })();
 
