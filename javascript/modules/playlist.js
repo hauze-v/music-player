@@ -66,6 +66,7 @@ const PlayList = (() => {
       currentlyPlayingIndex++;
       changeAudioSrc();
       togglePlayPause();
+      changeFeaturedImg();
       render();
     }
   }
