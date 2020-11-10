@@ -1,7 +1,7 @@
 export const songsList = [{
   "id": "1",
   "url": "/music-player/music/Aftergold.mp3",
-  "image": "../../images/aftergold_big_wild.jpg",
+  "image": "/music-player/images/aftergold_big_wild.jpg",
   "time": "03:50",
   "title": "Aftergold",
   "artist": "Big Wild"
