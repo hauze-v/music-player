@@ -9,9 +9,11 @@ const PlayList = (() => {
   let currentlyPlayingIndex = 0;
   // We're using a built-in web API from the browser to play audio and get various audio file information
   let currentSong = new Audio(songs[currentlyPlayingIndex].url);
+  let featuredImg = "../../images/aftergold_big_wild.jpg";
 
  /* Cache the DOM */
  const playlistEl = document.querySelector(".playlist");
+ const playerImgEl = document.querySelector(".player__img");
 
   const init = () => {
     render();
@@ -32,6 +34,10 @@ const PlayList = (() => {
     currentSong.src = songs[currentlyPlayingIndex].url;
   }
 
+  const changeFeaturedImg = () => {
+    featuredImg = songs[currentlyPlayingIndex].image;
+  }
+
   const togglePlayPause = () => {
     return currentSong.paused ? currentSong.play() : currentSong.pause();
   }
@@ -45,6 +51,7 @@ const PlayList = (() => {
       currentlyPlayingIndex = clickedIndex;
       changeAudioSrc();
       togglePlayPause();
+      changeFeaturedImg();
     }
 
     PlayInfo.setState({
@@ -123,6 +130,7 @@ const PlayList = (() => {
     })
 
     playlistEl.innerHTML = markup;
+    playerImgEl.src = featuredImg;
   }
 
   return {

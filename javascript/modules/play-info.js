@@ -5,7 +5,7 @@ const PlayInfo = (() => {
   /* Data and state variables */
   const state = {
     songsLength: 0,
-    isPlaying: false
+    isPlaying: false,
   }
 
   /* Cache the DOM  */
