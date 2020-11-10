@@ -43,12 +43,17 @@ const PlayList = (() => {
     }
   }
 
+  const playNext = () => {
+    /* If the next song exists, go to it */
+    if (songs[currentlyPlayingIndex + 1]) {
+      currentlyPlayingIndex++;
+      changeAudioSrc();
+      togglePlayPause();
+      render();
+    }
+  }
+
   const listeners = () => {
-    // 1. Get the index of whatever's clicked
-    // 2. change the currentPlayingIndex to the index of the li tag
-    // 3. Play or pause
-      // - if it's not the same song, then change the source to that new song
-    
     playlistEl.addEventListener("click", function(event) {
       if (event.target && event.target.matches(".pp-icon")) {
         /* Walk up the DOM from icon to li element */
@@ -62,6 +67,10 @@ const PlayList = (() => {
         mainPlay(listElIndex);
         render();
       }
+    })
+
+    currentSong.addEventListener("ended", function() {
+      playNext();
     })
   }
 
