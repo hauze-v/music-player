@@ -1,6 +1,6 @@
 export const songsList = [{
   "id": "1",
-  "url": "../../music/Aftergold.mp3",
+  "url": "/music-player/music/Aftergold.mp3",
   "image": "../../images/aftergold_big_wild.jpg",
   "time": "03:50",
   "title": "Aftergold",
@@ -8,7 +8,7 @@ export const songsList = [{
 },
 {
   "id": "2",
-  "url": "../../music/Angst.mp3",
+  "url": "/music-player/music/Angst.mp3",
   "image": "../../images/angst_inzo.jpg",
   "time": "03:17",
   "title": "Angst",
