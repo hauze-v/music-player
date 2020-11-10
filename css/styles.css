@@ -54,6 +54,7 @@ body {
   height: 6px;
   width: 0%;
   background-color: var(--light-green);
+  transition: 0.1s all ease;
 }
 
 /* --- Player styles --- */

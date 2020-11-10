@@ -20,7 +20,7 @@ const TrackBar = (() => {
   }
 
   const getPercentage = (current, full) => {
-    return Math.floor((current / full) * 100);
+    return (current / full) * 100;
   }
 
   const setState = (obj) => {
