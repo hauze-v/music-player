@@ -1,6 +1,6 @@
 import { songsList } from "../data/songs.js"; // grabs the songlist array object from songs.js
 import PlayInfo from "./play-info.js";
-// import { PlayInfo } from "../modules/play-info.js"; // grabs the object returned by PlayInfo
+import TrackBar from "./track-bar.js";
 
 /* Use the revealing module pattern*/
 const PlayList = (() => {
@@ -81,6 +81,10 @@ const PlayList = (() => {
 
     currentSong.addEventListener("ended", function() {
       playNext();
+    })
+
+    currentSong.addEventListener("timeupdate", function() {
+      TrackBar.setState(currentSong);
     })
   }
 
